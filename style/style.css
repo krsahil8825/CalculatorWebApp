@@ -1,0 +1,290 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", "Times New Roman", Times, serif, sans-serif;
+  color: rgb(225, 225, 225);
+  text-decoration: none;
+  list-style: none;
+  list-style-position: outside;
+}
+
+body {
+  background-color: rgb(1, 0, 19);
+  font-size: 1rem;
+  line-height: 1.5;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 1.25rem;
+}
+
+.calculator {
+  width: 23.75rem;
+  padding: 1.25rem;
+  background-color: rgb(30, 30, 30);
+  border: double 0.3125rem rgb(0, 0, 0);
+  border-radius: 0.625rem;
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+}
+
+.display input {
+  width: 100%;
+  height: 5rem;
+  background-color: rgb(207, 207, 207);
+  border-radius: 0.3125rem;
+  border: double 0.3125rem rgb(0, 0, 0);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: not-allowed;
+}
+
+.buttons {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  grid-gap: 0.625rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.buttons button {
+  width: 4.375rem;
+  height: 4.375rem;
+  background-color: rgb(49, 49, 49);
+  border-radius: 0.3125rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 28rem) {
+  .calculator {
+    width: 17.5rem;
+    padding: 0.625rem;
+  }
+
+  .display input {
+    height: 3.75rem;
+    font-size: 1.25rem;
+  }
+
+  .buttons button {
+    width: 3.125rem;
+    height: 3.125rem;
+    font-size: 1.2rem;
+  }
+}
+
+.calculator {
+  position: relative;
+}
+
+@property --degree {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.calculator::after,
+.calculator::before {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  padding: 10px;
+  border-radius: 0.625rem;
+  z-index: -1;
+  background-image: conic-gradient(
+    from var(--degree),
+    rgb(255, 0, 0) 0%,
+    rgb(255, 165, 0) 15%,
+    rgb(255, 255, 0) 40%,
+    rgb(0, 128, 0) 65%,
+    rgb(0, 0, 255) 90%,
+    rgb(255, 0, 0) 100%
+  );
+  filter: blur(0.3125rem);
+  opacity: 0.5;
+  animation: rotate 5s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    --degree: 0deg;
+  }
+  to {
+    --degree: 360deg;
+  }
+}
+
+/* navbar */
+header {
+  width: 100%;
+}
+
+nav {
+  width: 100%;
+  height: 4rem;
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.25rem;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.5);
+}
+
+nav div a {
+  color: rgb(225, 225, 225);
+  font-size: 2rem;
+  font-weight: 900;
+  text-wrap: nowrap;
+  transition: color 0.3s ease;
+}
+
+nav ul {
+  display: flex;
+  gap: 1.25rem;
+}
+
+nav ul li a {
+  color: rgb(225, 225, 225);
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+span#openNavMenuBtn,
+span#closeNavMenuBtn {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: rgb(225, 225, 225);
+  font-weight: 800;
+  transition: color 0.3s ease;
+}
+
+nav ul li a:hover,
+nav div a:hover {
+  color: rgb(255, 165, 0);
+}
+
+@media screen and (max-width: 48rem) {
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    left: 0;
+    width: 100vw;
+    background-color: rgb(30, 30, 30);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-top: 0.0625rem solid rgba(225, 225, 225, 0.2);
+    padding: 1rem 0;
+    z-index: 1000;
+  }
+
+  nav ul li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 0.0625rem solid rgba(225, 225, 225, 0.2);
+    padding: 0.5rem 0;
+  }
+
+  nav ul li a {
+    font-size: 1.25rem;
+    width: 100vw;
+    text-align: center;
+  }
+
+  span#openNavMenuBtn {
+    display: block;
+  }
+
+  span#closeNavMenuBtn {
+    display: none;
+  }
+
+  nav ul li a:hover {
+    color: rgb(225, 225, 225);
+  }
+
+  nav ul li a:active,
+  nav div a:active,
+  span#openNavMenuBtn:active,
+  span#closeNavMenuBtn:active {
+    color: rgb(255, 165, 0);
+  }
+}
+
+footer {
+  width: 100%;
+  height: auto;
+  background-color: rgb(30, 30, 30);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 1rem 0.5rem;
+  box-shadow: 0 -0.25rem 1.25rem rgba(0, 0, 0, 0.5);
+}
+
+footer ul {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 0.5rem;
+}
+
+footer ul li a {
+  width: 1.75rem;
+  height: 1.75rem;
+  background-color: rgb(255, 165, 0);
+  padding: 0.25rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.75);
+  transition: all 0.3s ease;
+}
+
+footer ul li a:hover {
+  background-color: rgb(225, 225, 225);
+  color: rgb(30, 30, 30);
+  transform: scale(1.2);
+}
+
+footer p {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+}
+
+footer p a {
+  color: rgb(255, 165, 0);
+  font-weight: 700;
+  text-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.5);
+}
