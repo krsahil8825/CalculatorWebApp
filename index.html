@@ -40,29 +40,29 @@
     <div class="calculator">
       <div class="display">
         <input type="text" id="display" disabled pattern="[0-9+\-*/().%]*"
-          title="Only numbers and operators are allowed">
+          title="Only numbers and operators are allowed" placeholder="0" />
       </div>
       <div class="buttons">
-        <button>(</button>
-        <button>)</button>
-        <button>%</button>
-        <button>AC</button>
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button>/</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button>x</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>-</button>
-        <button>0</button>
-        <button>.</button>
-        <button>=</button>
-        <button>+</button>
+        <button id="IDopen" onclick="bracketOpen()">&#40;</button>
+        <button id="IDclose" onclick="bracketClose()">&#41;</button>
+        <button id="IDbackspace" onclick="backspace()">C</button>
+        <button id="IDclearAll" onclick="clearDisplay()">AC</button>
+        <button id="IDseven" onclick="seven()">7</button>
+        <button id="IDeight" onclick="eight()">8</button>
+        <button id="IDnine" onclick="nine()">9</button>
+        <button id="IDdivide" onclick="divide()">/</button>
+        <button id="IDfour" onclick="four()">4</button>
+        <button id="IDfive" onclick="five()">5</button>
+        <button id="IDsix" onclick="six()">6</button>
+        <button id="IDmultiply" onclick="multiply()">x</button>
+        <button id="IDone" onclick="one()">1</button>
+        <button id="IDtwo" onclick="two()">2</button>
+        <button id="IDthree" onclick="three()">3</button>
+        <button id="IDsubtract" onclick="subtract()">-</button>
+        <button id="IDzero" onclick="zero()">0</button>
+        <button id="IDdecimal" onclick="decimal()">.</button>
+        <button id="IDequals" onclick="equals()">=</button>
+        <button id="IDadd" onclick="add()">+</button>
       </div>
     </div>
   </main>
